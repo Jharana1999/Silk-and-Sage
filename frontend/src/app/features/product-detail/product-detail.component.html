@@ -34,7 +34,7 @@
       <div class="space-y-4">
         <div class="aspect-square overflow-hidden bg-cream-100">
           <img
-            [src]="selectedImage() || p.images[0]?.url"
+            [src]="(selectedImage() || p.images[0]?.url) | assetUrl"
             [alt]="p.name"
             class="w-full h-full object-cover transition-opacity duration-300"
           >
@@ -48,7 +48,7 @@
                 [class.border-sage-500]="selectedImage() === img.url"
                 [class.border-transparent]="selectedImage() !== img.url"
               >
-                <img [src]="img.url" [alt]="img.alt_text || p.name" class="w-full h-full object-cover">
+                <img [src]="img.url | assetUrl" [alt]="img.alt_text || p.name" class="w-full h-full object-cover">
               </button>
             }
           </div>

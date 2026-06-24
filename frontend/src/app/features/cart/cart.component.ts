@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../core/services/cart.service';
 import { ToastService } from '../../core/services/toast.service';
+import { AssetUrlPipe } from '../../shared/pipes/asset-url.pipe';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, AssetUrlPipe],
   templateUrl: './cart.component.html',
 })
 export class CartComponent {

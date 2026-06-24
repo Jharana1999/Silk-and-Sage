@@ -1,0 +1,27 @@
+# Render Blueprint — optional. You can also create the service manually in the dashboard.
+services:
+  - type: web
+    name: silk-and-sage-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:4200
+      - key: ADMIN_EMAIL
+        value: admin@silkandsage.com
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        value: ""
+      - key: STRIPE_PUBLISHABLE_KEY
+        value: ""
+      - key: STRIPE_WEBHOOK_SECRET
+        value: ""

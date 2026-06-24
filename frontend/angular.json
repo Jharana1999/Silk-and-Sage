@@ -26,7 +26,11 @@
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              { "glob": "_redirects", "input": "src", "output": "/" }
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
@@ -64,7 +68,11 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              { "glob": "_redirects", "input": "src", "output": "/" }
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           }

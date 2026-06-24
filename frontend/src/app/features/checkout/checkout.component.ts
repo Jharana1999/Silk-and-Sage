@@ -7,11 +7,12 @@ import { OrderService } from '../../core/services/order.service';
 import { AuthService } from '../../core/services/auth.service';
 import { ToastService } from '../../core/services/toast.service';
 import { CheckoutRequest } from '../../core/models/order.model';
+import { AssetUrlPipe } from '../../shared/pipes/asset-url.pipe';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, AssetUrlPipe],
   templateUrl: './checkout.component.html',
 })
 export class CheckoutComponent implements OnInit {

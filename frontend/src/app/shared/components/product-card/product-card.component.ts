@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Product } from '../../../core/models/product.model';
 import { CartService } from '../../../core/services/cart.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { AssetUrlPipe } from '../../pipes/asset-url.pipe';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, AssetUrlPipe],
   template: `
     <div class="card-luxury group relative overflow-hidden bg-white" [class.animate-fade-in]="animated">
       <!-- Badges -->
@@ -41,7 +42,7 @@ import { ToastService } from '../../../core/services/toast.service';
       <a [routerLink]="['/products', product.slug]" class="block overflow-hidden aspect-[3/4] bg-cream-100">
         @if (primaryImage) {
           <img
-            [src]="primaryImage.url"
+            [src]="primaryImage.url | assetUrl"
             [alt]="primaryImage.alt_text || product.name"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"

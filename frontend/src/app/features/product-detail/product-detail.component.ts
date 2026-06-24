@@ -7,11 +7,12 @@ import { CartService } from '../../core/services/cart.service';
 import { AuthService } from '../../core/services/auth.service';
 import { ToastService } from '../../core/services/toast.service';
 import { ProductDetail, ProductReview, ReviewCreate } from '../../core/models/product.model';
+import { AssetUrlPipe } from '../../shared/pipes/asset-url.pipe';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, AssetUrlPipe],
   templateUrl: './product-detail.component.html',
 })
 export class ProductDetailComponent implements OnInit {

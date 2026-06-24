@@ -47,7 +47,7 @@
                     <div class="flex items-center gap-3">
                       <div class="w-12 h-12 bg-cream-100 flex-shrink-0 overflow-hidden">
                         @if (product.images[0]) {
-                          <img [src]="product.images[0].url" [alt]="product.name" class="w-full h-full object-cover">
+                          <img [src]="product.images[0].url | assetUrl" [alt]="product.name" class="w-full h-full object-cover">
                         }
                       </div>
                       <div>

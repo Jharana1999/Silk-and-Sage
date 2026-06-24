@@ -30,7 +30,7 @@
           <div class="flex gap-5 p-5 bg-white shadow-card items-start">
             <a [routerLink]="['/products', item.product.slug]" class="flex-shrink-0 w-24 h-28 bg-cream-100 overflow-hidden">
               @if (item.product.images[0]) {
-                <img [src]="item.product.images[0].url" [alt]="item.product.name" class="w-full h-full object-cover">
+                <img [src]="item.product.images[0].url | assetUrl" [alt]="item.product.name" class="w-full h-full object-cover">
               }
             </a>
 

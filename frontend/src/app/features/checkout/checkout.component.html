@@ -100,7 +100,7 @@
                   <div class="flex gap-4 py-3 border-b border-gray-50 last:border-0">
                     <div class="w-16 h-16 bg-cream-100 flex-shrink-0 overflow-hidden">
                       @if (item.product.images[0]) {
-                        <img [src]="item.product.images[0].url" class="w-full h-full object-cover" [alt]="item.product.name">
+                        <img [src]="item.product.images[0].url | assetUrl" class="w-full h-full object-cover" [alt]="item.product.name">
                       }
                     </div>
                     <div class="flex-1">

@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angu
 import { ProductService } from '../../core/services/product.service';
 import { ToastService } from '../../core/services/toast.service';
 import { Product, Category } from '../../core/models/product.model';
+import { AssetUrlPipe } from '../../shared/pipes/asset-url.pipe';
 
 @Component({
   selector: 'app-admin-products',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink, CommonModule, FormsModule, ReactiveFormsModule, AssetUrlPipe],
   templateUrl: './admin-products.component.html',
 })
 export class AdminProductsComponent implements OnInit {
