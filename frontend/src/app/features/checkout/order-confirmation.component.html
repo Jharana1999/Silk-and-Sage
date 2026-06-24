@@ -1,0 +1,55 @@
+<div class="page-wrapper py-20 text-center">
+  <div class="max-w-lg mx-auto">
+    <div class="w-20 h-20 bg-sage-100 rounded-full flex items-center justify-center mx-auto mb-6">
+      <svg class="w-10 h-10 text-sage-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+    </div>
+
+    <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3">Shukriya!</p>
+    <h1 class="font-serif text-3xl md:text-4xl text-sage-800 mb-4">Order Confirmed</h1>
+    <div class="gold-line mb-6"></div>
+
+    @if (order(); as o) {
+      <div class="bg-white shadow-card p-6 text-left mb-8">
+        <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-100">
+          <div>
+            <p class="font-sans text-xs text-gray-400 uppercase tracking-widest">Order Number</p>
+            <p class="font-serif text-xl text-sage-700 font-medium">{{ o.order_number }}</p>
+          </div>
+          <div class="text-right">
+            <p class="font-sans text-xs text-gray-400 uppercase tracking-widest">Total</p>
+            <p class="font-serif text-xl text-sage-700 font-medium">Rs. {{ o.total_amount | number:'1.0-0' }}</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-4">
+          @for (item of o.items; track item.id) {
+            <div class="flex justify-between font-sans text-sm">
+              <span class="text-gray-700">{{ item.product_name }} x {{ item.quantity }}</span>
+              <span class="text-gray-600">Rs. {{ item.total_price | number:'1.0-0' }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="border-t border-gray-100 pt-4 space-y-1">
+          <p class="font-sans text-xs text-gray-500">Delivering to: {{ o.customer_name }}</p>
+          <p class="font-sans text-xs text-gray-500">{{ o.shipping_address_line1 }}, {{ o.shipping_city }}, {{ o.shipping_state }}</p>
+          <p class="font-sans text-xs text-gray-400 mt-2">Confirmation sent to {{ o.customer_email }}</p>
+        </div>
+      </div>
+    } @else {
+      <div class="bg-cream-100 p-8 mb-8">
+        <p class="font-sans text-sm text-gray-600">Your order has been placed successfully. A confirmation will be sent to you shortly.</p>
+        <p class="font-sans text-lg text-sage-700 font-serif mt-2">Order: {{ orderNumber() }}</p>
+      </div>
+    }
+
+    <p class="font-sans text-sm text-gray-500 mb-8">We'll deliver your skincare products as fast as possible. You'll receive updates via email.</p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a routerLink="/shop" class="btn-primary">Continue Shopping</a>
+      <a routerLink="/account" class="btn-secondary">View My Orders</a>
+    </div>
+  </div>
+</div>

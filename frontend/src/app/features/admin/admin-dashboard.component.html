@@ -1,0 +1,127 @@
+<div class="min-h-screen bg-gray-50 flex">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-sage-900 text-cream-200 flex flex-col flex-shrink-0">
+    <div class="p-6 border-b border-white/10">
+      <a routerLink="/" class="font-serif text-xl text-white tracking-wide">Silk <span class="text-gold-400">&</span> Sage</a>
+      <p class="font-sans text-xs text-sage-400 mt-1 uppercase tracking-widest">Admin Panel</p>
+    </div>
+    <nav class="flex-1 py-6 px-3">
+      @for (item of navItems; track item.label) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="bg-sage-700 text-white"
+          [routerLinkActiveOptions]="{exact: item.path === '/admin'}"
+          class="flex items-center gap-3 px-4 py-3 rounded font-sans text-sm text-sage-300 hover:bg-sage-800 hover:text-white transition-all mb-1"
+        >
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="item.icon"/>
+          </svg>
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <a routerLink="/" class="flex items-center gap-2 font-sans text-xs text-sage-400 hover:text-cream-200 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Back to Store
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 overflow-auto p-8">
+    <div class="mb-8">
+      <h1 class="font-serif text-3xl text-sage-800">Dashboard</h1>
+      <p class="font-sans text-sm text-gray-500 mt-1">Welcome back, Admin</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+      @for (stat of [
+        {label: 'Total Orders', value: stats().orders, icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', color: 'sage'},
+        {label: 'Revenue', value: '$' + stats().revenue.toFixed(2), icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: 'gold'},
+        {label: 'Products', value: stats().products, icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4', color: 'sage'},
+        {label: 'Pending Orders', value: stats().pending, icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', color: 'gold'},
+      ]; track stat.label) {
+        <div class="bg-white shadow-card p-6">
+          <div class="flex items-center justify-between mb-4">
+            <p class="font-sans text-xs uppercase tracking-widest text-gray-400">{{ stat.label }}</p>
+            <div class="w-9 h-9 bg-sage-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="stat.icon"/>
+              </svg>
+            </div>
+          </div>
+          <p class="font-serif text-3xl text-sage-800 font-medium">{{ stat.value }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Recent Orders -->
+    <div class="bg-white shadow-card">
+      <div class="flex items-center justify-between p-6 border-b border-gray-100">
+        <h2 class="font-serif text-xl text-sage-800">Recent Orders</h2>
+        <a routerLink="/admin/orders" class="font-sans text-xs text-sage-600 hover:underline uppercase tracking-widest">View All</a>
+      </div>
+      @if (loading()) {
+        <div class="p-6 text-center">
+          <p class="font-sans text-sm text-gray-400">Loading...</p>
+        </div>
+      } @else {
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-100">
+              <tr>
+                @for (col of ['Order #', 'Customer', 'Status', 'Total', 'Date']; track col) {
+                  <th class="px-6 py-3 text-left font-sans text-xs uppercase tracking-widest text-gray-400">{{ col }}</th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+              @for (order of orders(); track order.id) {
+                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
+                  <td class="px-6 py-4 font-mono text-sm text-sage-600">{{ order.order_number }}</td>
+                  <td class="px-6 py-4 font-sans text-sm text-gray-700">{{ order.customer_name }}</td>
+                  <td class="px-6 py-4">
+                    <span class="font-sans text-xs px-3 py-1 rounded-full capitalize"
+                          [class.bg-sage-100]="order.status === 'delivered'"
+                          [class.text-sage-700]="order.status === 'delivered'"
+                          [class.bg-gold-100]="order.status === 'shipped'"
+                          [class.text-gold-700]="order.status === 'shipped'"
+                          [class.bg-blue-100]="order.status === 'confirmed' || order.status === 'processing'"
+                          [class.text-blue-700]="order.status === 'confirmed' || order.status === 'processing'"
+                          [class.bg-gray-100]="order.status === 'pending'"
+                          [class.text-gray-600]="order.status === 'pending'"
+                          [class.bg-red-100]="order.status === 'cancelled'"
+                          [class.text-red-600]="order.status === 'cancelled'"
+                    >{{ order.status }}</span>
+                  </td>
+                  <td class="px-6 py-4 font-sans text-sm text-gray-700">${{ order.total_amount | number:'1.2-2' }}</td>
+                  <td class="px-6 py-4 font-sans text-xs text-gray-400">{{ order.created_at | date:'mediumDate' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      @for (action of [
+        {label: 'Add Product', path: '/admin/products', icon: '➕'},
+        {label: 'Manage Orders', path: '/admin/orders', icon: '📦'},
+        {label: 'Categories', path: '/admin/categories', icon: '🏷️'},
+        {label: 'View Store', path: '/', icon: '🌿'},
+      ]; track action.label) {
+        <a [routerLink]="action.path"
+           class="bg-white shadow-card p-5 text-center hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200">
+          <span class="text-2xl block mb-2">{{ action.icon }}</span>
+          <p class="font-sans text-xs uppercase tracking-widest text-gray-600">{{ action.label }}</p>
+        </a>
+      }
+    </div>
+  </main>
+</div>

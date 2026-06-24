@@ -1,0 +1,134 @@
+<div class="min-h-screen bg-gray-50 flex">
+  <aside class="w-64 bg-sage-900 text-cream-200 flex flex-col flex-shrink-0">
+    <div class="p-6 border-b border-white/10">
+      <a routerLink="/" class="font-serif text-xl text-white tracking-wide">Silk <span class="text-gold-400">&</span> Sage</a>
+      <p class="font-sans text-xs text-sage-400 mt-1 uppercase tracking-widest">Admin Panel</p>
+    </div>
+    <nav class="flex-1 py-6 px-3">
+      @for (item of [{label:'Dashboard',path:'/admin'},{label:'Products',path:'/admin/products'},{label:'Orders',path:'/admin/orders'},{label:'Categories',path:'/admin/categories'}]; track item.label) {
+        <a [routerLink]="item.path" class="block px-4 py-3 font-sans text-sm text-sage-300 hover:bg-sage-800 hover:text-white rounded mb-1 transition-all">{{ item.label }}</a>
+      }
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <a routerLink="/" class="font-sans text-xs text-sage-400 hover:text-cream-200">← Back to Store</a>
+    </div>
+  </aside>
+
+  <main class="flex-1 overflow-auto p-8">
+    <div class="mb-8">
+      <h1 class="font-serif text-3xl text-sage-800">Orders</h1>
+      <p class="font-sans text-sm text-gray-500 mt-1">{{ orders().length }} total orders</p>
+    </div>
+
+    @if (loading()) {
+      <p class="font-sans text-sm text-gray-400 text-center py-20">Loading orders...</p>
+    } @else {
+      <div class="bg-white shadow-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-100">
+              <tr>
+                @for (col of ['Order #', 'Customer', 'Status', 'Payment', 'Total', 'Date', 'Actions']; track col) {
+                  <th class="px-5 py-3 text-left font-sans text-xs uppercase tracking-widest text-gray-400">{{ col }}</th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+              @for (order of orders(); track order.id) {
+                <tr class="border-b border-gray-50 hover:bg-gray-50/50">
+                  <td class="px-5 py-4 font-mono text-sm text-sage-600">{{ order.order_number }}</td>
+                  <td class="px-5 py-4">
+                    <p class="font-sans text-sm text-gray-800">{{ order.customer_name }}</p>
+                    <p class="font-sans text-xs text-gray-400">{{ order.customer_email }}</p>
+                  </td>
+                  <td class="px-5 py-4">
+                    <span class="font-sans text-xs px-2.5 py-1 rounded-full capitalize {{ statusColor(order.status) }}">{{ order.status }}</span>
+                  </td>
+                  <td class="px-5 py-4">
+                    <span class="font-sans text-xs px-2.5 py-1 rounded-full capitalize"
+                          [class.bg-sage-100]="order.payment_status === 'paid'"
+                          [class.text-sage-700]="order.payment_status === 'paid'"
+                          [class.bg-gray-100]="order.payment_status === 'pending'"
+                          [class.text-gray-600]="order.payment_status === 'pending'"
+                          [class.bg-red-100]="order.payment_status === 'failed'"
+                          [class.text-red-600]="order.payment_status === 'failed'">
+                      {{ order.payment_status }}
+                    </span>
+                  </td>
+                  <td class="px-5 py-4 font-sans text-sm text-gray-700">${{ order.total_amount | number:'1.2-2' }}</td>
+                  <td class="px-5 py-4 font-sans text-xs text-gray-400">{{ order.created_at | date:'mediumDate' }}</td>
+                  <td class="px-5 py-4">
+                    <button (click)="openOrder(order)" class="font-sans text-xs text-sage-600 hover:underline">Manage</button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+  </main>
+</div>
+
+<!-- Order detail modal -->
+@if (selectedOrder(); as order) {
+  <div class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" (click)="selectedOrder.set(null)">
+    <div class="bg-white w-full max-w-xl shadow-2xl max-h-[90vh] overflow-y-auto" (click)="$event.stopPropagation()">
+      <div class="flex items-center justify-between p-6 border-b border-gray-100">
+        <h2 class="font-serif text-xl text-sage-800">Order {{ order.order_number }}</h2>
+        <button (click)="selectedOrder.set(null)" class="text-gray-400 hover:text-gray-600">✕</button>
+      </div>
+      <div class="p-6 space-y-6">
+        <!-- Customer info -->
+        <div>
+          <p class="label-field mb-2">Customer</p>
+          <p class="font-sans text-sm text-gray-700">{{ order.customer_name }}</p>
+          <p class="font-sans text-sm text-gray-500">{{ order.customer_email }}</p>
+        </div>
+
+        <!-- Shipping -->
+        <div>
+          <p class="label-field mb-2">Ship To</p>
+          <p class="font-sans text-sm text-gray-700">{{ order.shipping_address_line1 }}</p>
+          <p class="font-sans text-sm text-gray-500">{{ order.shipping_city }}, {{ order.shipping_state }} {{ order.shipping_zip }}</p>
+        </div>
+
+        <!-- Items -->
+        <div>
+          <p class="label-field mb-2">Items</p>
+          <div class="space-y-2">
+            @for (item of order.items; track item.id) {
+              <div class="flex justify-between font-sans text-sm">
+                <span class="text-gray-700">{{ item.product_name }} × {{ item.quantity }}</span>
+                <span class="text-gray-600">${{ item.total_price | number:'1.2-2' }}</span>
+              </div>
+            }
+          </div>
+          <div class="border-t border-gray-100 mt-3 pt-3 flex justify-between font-sans text-sm font-medium">
+            <span>Total</span>
+            <span class="text-sage-700">${{ order.total_amount | number:'1.2-2' }}</span>
+          </div>
+        </div>
+
+        <!-- Update status -->
+        <div>
+          <p class="label-field mb-3">Update Status</p>
+          <select [(ngModel)]="newStatus" class="input-field mb-3">
+            @for (st of statuses; track st) {
+              <option [value]="st">{{ st }}</option>
+            }
+          </select>
+          <label class="label-field mb-2">Tracking Number</label>
+          <input type="text" [(ngModel)]="trackingNumber" class="input-field" placeholder="Optional tracking number">
+        </div>
+
+        <div class="flex justify-end gap-3 pt-2">
+          <button (click)="selectedOrder.set(null)" class="btn-secondary text-xs">Close</button>
+          <button (click)="updateStatus()" [disabled]="updating()" class="btn-primary text-xs">
+            {{ updating() ? 'Updating...' : 'Update Order' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

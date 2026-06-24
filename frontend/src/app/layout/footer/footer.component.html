@@ -1,0 +1,118 @@
+<footer class="bg-sage-900 text-cream-200">
+  <!-- Newsletter section -->
+  <div class="bg-sage-700 py-14">
+    <div class="page-wrapper text-center">
+      <p class="font-sans text-xs uppercase tracking-widest text-gold-300 mb-3">Join Our Community</p>
+      <h3 class="font-serif text-2xl md:text-3xl text-white mb-2">Discover Your Skin's Potential</h3>
+      <p class="font-sans text-sm text-cream-300 mb-8 max-w-md mx-auto">Get expert skincare tips, early access to new products, and exclusive member-only offers.</p>
+      <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="flex-1 px-5 py-3 bg-white/10 border border-white/20 text-white placeholder-cream-400
+                 font-sans text-sm outline-none focus:border-gold-400 focus:bg-white/15 transition-all"
+        >
+        <button class="btn-gold whitespace-nowrap">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main footer -->
+  <div class="page-wrapper py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <span class="font-serif text-2xl font-semibold text-white tracking-wide">
+          Silk <span class="text-gold-400">&amp;</span> Sage
+        </span>
+        <p class="font-sans text-sm text-cream-300 leading-relaxed mt-4 mb-6">
+          Premium botanical skincare crafted with nature's finest ingredients. Because your skin deserves the very best.
+        </p>
+        <!-- Socials -->
+        <div class="flex gap-4">
+          @for (social of socials; track social.name) {
+            <a [href]="social.url" target="_blank" rel="noopener"
+               class="w-9 h-9 border border-white/20 flex items-center justify-center text-cream-300
+                      hover:border-gold-400 hover:text-gold-400 transition-all duration-200">
+              <span class="sr-only">{{ social.name }}</span>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" [innerHTML]="social.icon"></svg>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <div>
+        <h4 class="font-sans text-xs uppercase tracking-widest text-gold-400 mb-5">Shop</h4>
+        <ul class="space-y-3">
+          @for (link of shopLinks; track link.label) {
+            <li>
+              <a [routerLink]="link.path" [queryParams]="link.query ?? {}"
+                 class="font-sans text-sm text-cream-300 hover:text-gold-300 transition-colors">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Help -->
+      <div>
+        <h4 class="font-sans text-xs uppercase tracking-widest text-gold-400 mb-5">Help</h4>
+        <ul class="space-y-3">
+          @for (link of helpLinks; track link.label) {
+            <li>
+              <a [routerLink]="link.path" class="font-sans text-sm text-cream-300 hover:text-gold-300 transition-colors">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-sans text-xs uppercase tracking-widest text-gold-400 mb-5">Contact</h4>
+        <ul class="space-y-3 font-sans text-sm text-cream-300">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            hello&#64;silkandsage.com
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 text-gold-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Mon–Fri, 9am–5pm 
+          </li>
+        </ul>
+        <!-- Trust badges -->
+        <div class="mt-8 flex flex-col gap-2">
+          @for (badge of trustBadges; track badge) {
+            <div class="flex items-center gap-2 text-xs text-cream-300">
+              <svg class="w-4 h-4 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              {{ badge }}
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10 py-6">
+    <div class="page-wrapper flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="font-sans text-xs text-cream-400">
+        &copy; {{ year }} Silk and Sage. All rights reserved.
+      </p>
+      <div class="flex gap-5">
+        @for (link of legalLinks; track link.label) {
+          <a [routerLink]="link.path" class="font-sans text-xs text-cream-400 hover:text-cream-200 transition-colors">{{ link.label }}</a>
+        }
+      </div>
+    </div>
+  </div>
+</footer>
