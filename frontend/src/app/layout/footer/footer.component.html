@@ -35,7 +35,9 @@
                class="w-9 h-9 border border-white/20 flex items-center justify-center text-cream-300
                       hover:border-gold-400 hover:text-gold-400 transition-all duration-200">
               <span class="sr-only">{{ social.name }}</span>
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" [innerHTML]="social.icon"></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path [attr.d]="social.path"></path>
+              </svg>
             </a>
           }
         </div>

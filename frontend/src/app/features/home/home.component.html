@@ -1,60 +1,82 @@
 <!-- HERO SECTION -->
-<section class="relative min-h-[90vh] flex items-center overflow-hidden bg-cream-200">
+<section
+  class="relative min-h-[90vh] flex items-center overflow-hidden bg-cream-200"
+>
   <div class="absolute inset-0 z-0">
     <img
       src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1600&q=80"
       alt="Premium skincare products"
       class="w-full h-full object-cover opacity-30"
-    >
-    <div class="absolute inset-0 bg-gradient-to-r from-cream-100/95 via-cream-100/70 to-transparent"></div>
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-cream-100/95 via-cream-100/70 to-transparent"
+    ></div>
   </div>
 
-  <div class="relative z-10 page-wrapper w-full py-20">
-    <div class="max-w-xl">
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-6 animate-fade-in">
-        50+ International & Local Brands
-      </p>
-      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-sage-800 leading-tight mb-6 animate-slide-up">
-        Nepal's Favourite<br>
-        <em class="not-italic text-gradient-sage">Skincare Store</em>
-      </h1>
-      <p class="font-sans text-base md:text-lg text-gray-600 font-light leading-relaxed mb-10 animate-slide-up animate-delay-100">
-        Top international skincare brands: The Ordinary, CeraVe, Cetaphil, Klairs and more — at Nepal's best prices. Plus a free monthly dermatologist consultation, on us.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 animate-slide-up animate-delay-200">
-        <a routerLink="/shop" class="btn-primary">Shop All Brands</a>
-        <a routerLink="/shop" [queryParams]="{is_bestseller: true}" class="btn-secondary">Bestsellers</a>
+  <div class="relative z-10 page-wrapper w-full">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div class="max-w-lg">
+        <p
+          class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-5 animate-fade-in"
+        >
+          50+ International & Local Brands
+        </p>
+        <h1
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-sage-800 leading-tight mb-5 animate-slide-up"
+        >
+          Nepal's Favourite<br />
+          <em class="not-italic text-gradient-sage">Skincare Store</em>
+        </h1>
+        <p
+          class="font-sans text-sm md:text-base text-gray-600 font-light leading-relaxed mb-8 animate-slide-up animate-delay-100"
+        >
+          Top international skincare brands: The Ordinary, CeraVe, Cetaphil,
+          Klairs and more — at Nepal's best prices. Plus a free monthly
+          dermatologist consultation, on us.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 animate-slide-up animate-delay-200"
+        >
+          <a routerLink="/shop" class="btn-primary">Shop All Brands</a>
+          <a
+            routerLink="/shop"
+            [queryParams]="{ is_bestseller: true }"
+            class="btn-secondary"
+            >Bestsellers</a
+          >
+        </div>
+
+        <!-- Social proof -->
+        <div
+          class="flex items-center gap-6 mt-10 animate-fade-in animate-delay-300"
+        >
+          <div class="text-center">
+            <p class="font-serif text-2xl font-semibold text-sage-700">500+</p>
+            <p class="font-sans text-xs text-gray-500 tracking-wide">
+              Products
+            </p>
+          </div>
+          <div class="w-px h-10 bg-sage-200"></div>
+          <div class="text-center">
+            <p class="font-serif text-2xl font-semibold text-sage-700">50+</p>
+            <p class="font-sans text-xs text-gray-500 tracking-wide">Brands</p>
+          </div>
+          <div class="w-px h-10 bg-sage-200"></div>
+          <div class="text-center">
+            <p class="font-serif text-2xl font-semibold text-sage-700">K+</p>
+            <p class="font-sans text-xs text-gray-500 tracking-wide">
+              Happy Customers
+            </p>
+          </div>
+        </div>
       </div>
 
-      <!-- Social proof -->
-      <div class="flex items-center gap-6 mt-12 animate-fade-in animate-delay-300">
-        <div class="text-center">
-          <p class="font-serif text-2xl font-semibold text-sage-700">500+</p>
-          <p class="font-sans text-xs text-gray-500 tracking-wide">Products</p>
-        </div>
-        <div class="w-px h-10 bg-sage-200"></div>
-        <div class="text-center">
-          <p class="font-serif text-2xl font-semibold text-sage-700">50+</p>
-          <p class="font-sans text-xs text-gray-500 tracking-wide">Brands</p>
-        </div>
-        <div class="w-px h-10 bg-sage-200"></div>
-        <div class="text-center">
-          <p class="font-serif text-2xl font-semibold text-sage-700">K+</p>
-          <p class="font-sans text-xs text-gray-500 tracking-wide">Happy Customers</p>
-        </div>
+      <!-- Promo carousel -->
+      <div
+        class="justify-self-center lg:justify-self-end animate-fade-in animate-delay-300"
+      >
+        <app-promo-carousel />
       </div>
-    </div>
-  </div>
-
-  <!-- Floating highlight card -->
-  <div class="absolute bottom-12 right-12 hidden lg:flex items-center gap-4 bg-white/90 backdrop-blur-sm p-4 shadow-luxury animate-fade-in animate-delay-400">
-    <div class="w-14 h-14 bg-sage-100 flex items-center justify-center">
-      <span class="text-2xl">🩺</span>
-    </div>
-    <div>
-      <p class="font-sans text-xs text-gray-400 uppercase tracking-widest">Exclusive Benefit</p>
-      <p class="font-serif text-sm text-sage-700 font-medium">Free Monthly Consultation</p>
-      <p class="font-sans text-xs text-gold-600">With certified dermatologists</p>
     </div>
   </div>
 </section>
@@ -62,11 +84,15 @@
 <!-- VALUES STRIP -->
 <section class="bg-sage-600 py-5">
   <div class="page-wrapper">
-    <div class="flex flex-wrap justify-center md:justify-between gap-6 md:gap-0">
+    <div
+      class="flex flex-wrap justify-center md:justify-between gap-6 md:gap-0"
+    >
       @for (val of values; track val.title) {
         <div class="flex items-center gap-3 text-cream-100">
           <span class="text-xl">{{ val.icon }}</span>
-          <p class="font-sans text-xs uppercase tracking-widest">{{ val.title }}</p>
+          <p class="font-sans text-xs uppercase tracking-widest">
+            {{ val.title }}
+          </p>
         </div>
       }
     </div>
@@ -77,15 +103,22 @@
 <section class="py-20 md:py-28">
   <div class="page-wrapper">
     <div class="text-center mb-14">
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3">Curated for You</p>
+      <p
+        class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3"
+      >
+        Curated for You
+      </p>
       <h2 class="section-title mb-4">Top Picks This Week</h2>
       <div class="gold-line mb-4"></div>
-      <p class="section-subtitle max-w-md mx-auto">Hand-picked bestsellers across brands chosen by our dermatologists and loved by thousands of customers across Nepal.</p>
+      <p class="section-subtitle max-w-md mx-auto">
+        Hand-picked bestsellers across brands chosen by our dermatologists and
+        loved by thousands of customers across Nepal.
+      </p>
     </div>
 
     @if (loading()) {
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-        @for (i of [1,2,3,4,5,6]; track i) {
+        @for (i of [1, 2, 3, 4, 5, 6]; track i) {
           <div class="skeleton aspect-[3/4] rounded-none"></div>
         }
       </div>
@@ -111,25 +144,51 @@
         src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80"
         alt="Skincare products"
         class="w-full h-full object-cover opacity-70"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-sage-900/80 to-transparent flex items-end p-8"
       >
-      <div class="absolute inset-0 bg-gradient-to-t from-sage-900/80 to-transparent flex items-end p-8">
         <div>
-          <p class="font-sans text-xs uppercase tracking-widest text-gold-300 mb-2">Your Skin, Our Priority</p>
-          <h3 class="font-serif text-3xl text-white mb-4">Real Brands. Real Results.</h3>
-          <a routerLink="/shop" [queryParams]="{is_new_arrival: true}" class="btn-gold text-xs">New Arrivals</a>
+          <p
+            class="font-sans text-xs uppercase tracking-widest text-gold-300 mb-2"
+          >
+            Your Skin, Our Priority
+          </p>
+          <h3 class="font-serif text-3xl text-white mb-4">
+            Real Brands. Real Results.
+          </h3>
+          <a
+            routerLink="/shop"
+            [queryParams]="{ is_new_arrival: true }"
+            class="btn-gold text-xs"
+            >New Arrivals</a
+          >
         </div>
       </div>
     </div>
     <div class="bg-cream-200 p-10 md:p-14 flex flex-col justify-center">
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-4">How It Works</p>
-      <h3 class="font-serif text-3xl text-sage-800 mb-8">Shopping Skincare Made Simple</h3>
+      <p
+        class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-4"
+      >
+        How It Works
+      </p>
+      <h3 class="font-serif text-3xl text-sage-800 mb-8">
+        Shopping Skincare Made Simple
+      </h3>
       <div class="space-y-6">
         @for (step of howItWorks; track step.step) {
           <div class="flex gap-5">
-            <span class="font-serif text-3xl font-light text-gold-400 leading-none flex-shrink-0">{{ step.step }}</span>
+            <span
+              class="font-serif text-3xl font-light text-gold-400 leading-none flex-shrink-0"
+              >{{ step.step }}</span
+            >
             <div>
-              <h4 class="font-serif text-lg text-sage-700 mb-1">{{ step.title }}</h4>
-              <p class="font-sans text-sm text-gray-500 leading-relaxed">{{ step.desc }}</p>
+              <h4 class="font-serif text-lg text-sage-700 mb-1">
+                {{ step.title }}
+              </h4>
+              <p class="font-sans text-sm text-gray-500 leading-relaxed">
+                {{ step.desc }}
+              </p>
             </div>
           </div>
         }
@@ -142,7 +201,11 @@
 <section class="py-20 md:py-28 bg-cream-50">
   <div class="page-wrapper">
     <div class="text-center mb-14">
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3">Explore</p>
+      <p
+        class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3"
+      >
+        Explore
+      </p>
       <h2 class="section-title mb-4">Shop by Category</h2>
       <div class="gold-line"></div>
     </div>
@@ -151,17 +214,29 @@
       @for (cat of categories(); track cat.id) {
         <a
           [routerLink]="['/shop']"
-          [queryParams]="{category: cat.slug}"
+          [queryParams]="{ category: cat.slug }"
           class="group relative overflow-hidden bg-cream-200 aspect-square flex items-end p-6 transition-all duration-300 hover:shadow-luxury"
         >
           @if (cat.image_url) {
-            <img [src]="cat.image_url" [alt]="cat.name" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
+            <img
+              [src]="cat.image_url"
+              [alt]="cat.name"
+              class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
+            />
           } @else {
-            <div class="absolute inset-0 bg-gradient-to-br from-sage-200 to-sage-400 opacity-60"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-sage-200 to-sage-400 opacity-60"
+            ></div>
           }
           <div class="relative z-10">
-            <h3 class="font-serif text-xl text-white font-medium drop-shadow-sm">{{ cat.name }}</h3>
-            <p class="font-sans text-xs text-cream-200 tracking-widest">{{ cat.product_count }} products</p>
+            <h3
+              class="font-serif text-xl text-white font-medium drop-shadow-sm"
+            >
+              {{ cat.name }}
+            </h3>
+            <p class="font-sans text-xs text-cream-200 tracking-widest">
+              {{ cat.product_count }} products
+            </p>
           </div>
         </a>
       }
@@ -173,64 +248,147 @@
 <section class="py-20 md:py-28 bg-sage-800">
   <div class="page-wrapper">
     <div class="text-center mb-14">
-      <span class="font-sans text-xs uppercase tracking-[0.3em] text-gold-300 mb-3 inline-block">What's Coming</span>
-      <h2 class="font-serif text-4xl text-white mb-4">Smarter Skincare, Soon</h2>
+      <span
+        class="font-sans text-xs uppercase tracking-[0.3em] text-gold-300 mb-3 inline-block"
+        >What's Coming</span
+      >
+      <h2 class="font-serif text-4xl text-white mb-4">
+        Smarter Skincare, Soon
+      </h2>
       <div class="gold-line mb-4"></div>
-      <p class="font-sans text-sm text-sage-300 max-w-md mx-auto">We're building tools that will make finding the right skincare effortless — powered by AI and backed by dermatologists.</p>
+      <p class="font-sans text-sm text-sage-300 max-w-md mx-auto">
+        We're building tools that will make finding the right skincare
+        effortless — powered by AI and backed by dermatologists.
+      </p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6">
       <!-- AI Skin Analysis -->
       <div class="border border-sage-600 p-8 relative">
         <div class="absolute top-5 right-5">
-          <span class="font-sans text-xs px-3 py-1 bg-gold-500 text-white uppercase tracking-widest">Coming Soon</span>
+          <span
+            class="font-sans text-xs px-3 py-1 bg-gold-500 text-white uppercase tracking-widest"
+            >Coming Soon</span
+          >
         </div>
-        <div class="w-14 h-14 bg-sage-700 flex items-center justify-center mb-6">
-          <svg class="w-7 h-7 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        <div
+          class="w-14 h-14 bg-sage-700 flex items-center justify-center mb-6"
+        >
+          <svg
+            class="w-7 h-7 text-gold-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
           </svg>
         </div>
         <h3 class="font-serif text-2xl text-white mb-3">AI Skin Analysis</h3>
-        <p class="font-sans text-sm text-sage-300 leading-relaxed mb-6">Answer a few questions about your skin type, concerns, and budget. Our AI will recommend the perfect products from across all our brands — no guesswork, no wasted money.</p>
+        <p class="font-sans text-sm text-sage-300 leading-relaxed mb-6">
+          Answer a few questions about your skin type, concerns, and budget. Our
+          AI will recommend the perfect products from across all our brands — no
+          guesswork, no wasted money.
+        </p>
         <div class="flex gap-3">
           <input
             type="email"
             [(ngModel)]="notifyEmail"
             placeholder="your@email.com"
             class="flex-1 bg-sage-700 border border-sage-600 text-white placeholder-sage-400 font-sans text-xs px-4 py-3 outline-none focus:border-gold-400"
+          />
+          <button
+            (click)="subscribeNotify()"
+            class="btn-gold text-xs whitespace-nowrap"
           >
-          <button (click)="subscribeNotify()" class="btn-gold text-xs whitespace-nowrap">Notify Me</button>
+            Notify Me
+          </button>
         </div>
       </div>
 
       <!-- Dermatologist Booking -->
       <div class="border border-sage-600 p-8 relative">
         <div class="absolute top-5 right-5">
-          <span class="font-sans text-xs px-3 py-1 bg-sage-500 text-white uppercase tracking-widest">Coming Soon</span>
+          <span
+            class="font-sans text-xs px-3 py-1 bg-sage-500 text-white uppercase tracking-widest"
+            >Coming Soon</span
+          >
         </div>
-        <div class="w-14 h-14 bg-sage-700 flex items-center justify-center mb-6">
-          <svg class="w-7 h-7 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        <div
+          class="w-14 h-14 bg-sage-700 flex items-center justify-center mb-6"
+        >
+          <svg
+            class="w-7 h-7 text-gold-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
           </svg>
         </div>
-        <h3 class="font-serif text-2xl text-white mb-3">Online Consultation Booking</h3>
-        <p class="font-sans text-sm text-sage-300 leading-relaxed mb-6">Every Silk & Sage customer gets one free 15-minute session with a certified Nepali dermatologist each month. Online booking is launching soon — for now, reach out to us directly.</p>
+        <h3 class="font-serif text-2xl text-white mb-3">
+          Online Consultation Booking
+        </h3>
+        <p class="font-sans text-sm text-sage-300 leading-relaxed mb-6">
+          Every Silk & Sage customer gets one free 15-minute session with a
+          certified Nepali dermatologist each month. Online booking is launching
+          soon — for now, reach out to us directly.
+        </p>
         <div class="space-y-2">
           <div class="flex items-center gap-2 font-sans text-xs text-sage-300">
-            <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            <svg
+              class="w-4 h-4 text-gold-400 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
             Free for all Silk & Sage customers
           </div>
           <div class="flex items-center gap-2 font-sans text-xs text-sage-300">
-            <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            <svg
+              class="w-4 h-4 text-gold-400 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
             Certified Nepali dermatologists
           </div>
           <div class="flex items-center gap-2 font-sans text-xs text-sage-300">
-            <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            <svg
+              class="w-4 h-4 text-gold-400 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
             One session per month, per account
           </div>
@@ -244,24 +402,42 @@
 <section class="py-20 md:py-28">
   <div class="page-wrapper">
     <div class="text-center mb-14">
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3">Real Customers</p>
+      <p
+        class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-3"
+      >
+        Real Customers
+      </p>
       <h2 class="section-title mb-4">What Nepal is Saying</h2>
       <div class="gold-line"></div>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
       @for (review of testimonials; track review.name) {
-        <div class="bg-white p-8 shadow-card hover:shadow-card-hover transition-all duration-300 border-b-2 border-gold-300">
+        <div
+          class="bg-white p-8 shadow-card hover:shadow-card-hover transition-all duration-300 border-b-2 border-gold-300"
+        >
           <div class="flex gap-1 mb-4">
             @for (s of stars; track $index) {
-              <svg class="w-4 h-4 text-gold-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              <svg
+                class="w-4 h-4 text-gold-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
               </svg>
             }
           </div>
-          <p class="font-sans text-sm text-gray-600 leading-relaxed mb-6 italic">"{{ review.text }}"</p>
+          <p
+            class="font-sans text-sm text-gray-600 leading-relaxed mb-6 italic"
+          >
+            "{{ review.text }}"
+          </p>
           <div class="flex items-center justify-between">
-            <p class="font-serif text-base text-sage-700 font-medium">{{ review.name }}</p>
+            <p class="font-serif text-base text-sage-700 font-medium">
+              {{ review.name }}
+            </p>
             <p class="font-sans text-xs text-gray-400">{{ review.product }}</p>
           </div>
         </div>
@@ -274,17 +450,45 @@
 <section class="py-20 bg-sage-50">
   <div class="page-wrapper grid md:grid-cols-2 gap-16 items-center">
     <div>
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-4">Our Promise</p>
-      <h2 class="font-serif text-4xl text-sage-800 leading-tight mb-6">Genuine Products,<br>Guaranteed</h2>
+      <p
+        class="font-sans text-xs uppercase tracking-[0.3em] text-gold-600 mb-4"
+      >
+        Our Promise
+      </p>
+      <h2 class="font-serif text-4xl text-sage-800 leading-tight mb-6">
+        Genuine Products,<br />Guaranteed
+      </h2>
       <div class="gold-line mb-6 mx-0"></div>
       <p class="font-sans text-sm text-gray-600 leading-relaxed mb-8">
-        Every product we sell is sourced directly from brand-authorized distributors. We verify authenticity, check expiry dates, and inspect packaging before it reaches you. No grey-market imports, no compromises.
+        Every product we sell is sourced directly from brand-authorized
+        distributors. We verify authenticity, check expiry dates, and inspect
+        packaging before it reaches you. No grey-market imports, no compromises.
       </p>
       <div class="grid grid-cols-2 gap-4">
-        @for (item of ['Brand-Authorized Only', 'Expiry Date Verified', 'Tamper-Proof Packaging', 'Dermatologist Curated', '30-Day Returns', 'Customer Support']; track item) {
+        @for (
+          item of [
+            "Brand-Authorized Only",
+            "Expiry Date Verified",
+            "Tamper-Proof Packaging",
+            "Dermatologist Curated",
+            "30-Day Returns",
+            "Customer Support",
+          ];
+          track item
+        ) {
           <div class="flex items-center gap-2 font-sans text-sm text-gray-600">
-            <svg class="w-4 h-4 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            <svg
+              class="w-4 h-4 text-sage-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
             {{ item }}
           </div>
@@ -296,10 +500,14 @@
         src="https://images.unsplash.com/photo-1617897903246-719242758050?w=700&q=80"
         alt="Genuine skincare products"
         class="w-full object-cover shadow-luxury"
+      />
+      <div
+        class="absolute -bottom-6 -left-6 bg-sage-600 text-white p-6 w-40 hidden md:block"
       >
-      <div class="absolute -bottom-6 -left-6 bg-sage-600 text-white p-6 w-40 hidden md:block">
         <p class="font-serif text-3xl font-semibold">100%</p>
-        <p class="font-sans text-xs leading-snug mt-1">Genuine Authenticated Products</p>
+        <p class="font-sans text-xs leading-snug mt-1">
+          Genuine Authenticated Products
+        </p>
       </div>
     </div>
   </div>

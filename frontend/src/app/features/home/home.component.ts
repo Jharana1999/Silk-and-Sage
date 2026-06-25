@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
+import { PromoCarouselComponent } from '../../shared/components/promo-carousel/promo-carousel.component';
 import { ProductService } from '../../core/services/product.service';
 import { ToastService } from '../../core/services/toast.service';
 import { Product, Category } from '../../core/models/product.model';
@@ -10,7 +11,7 @@ import { Product, Category } from '../../core/models/product.model';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule, ProductCardComponent],
+  imports: [RouterLink, CommonModule, FormsModule, ProductCardComponent, PromoCarouselComponent],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
